@@ -13,7 +13,7 @@ namespace ProjectWeb3.Data
 
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<ProdutoFoto> ProdutoFoto { get; set; }
+        public DbSet<ProdutoFoto> ProdutoFotos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -29,68 +29,7 @@ namespace ProjectWeb3.Data
             builder.Entity<IdentityRoleClaim<string>>().ToTable("perfil_regra");       
             #endregion
 
-            #region Categorias
-                
-                List<Categoria> categorias = new(){
-                    new(){
-                        Id = 1,
-                        Name = "Eletrônicos", 
-                    },
-                    new(){
-                        Id = 2,
-                        Name = "Celulares"
-                    }
-                };
-                builder.Entity<Categoria>().HasData(categorias);
-            #endregion
-            #region Popular Usuario
-
-            Usuario usuario = new(){
-                Id = Guid.NewGuid().ToString(),
-                UserName = "BotinhoLindo",
-                NormalizedUserName = "BOTINHOLINDO",
-                Email = "BotiLoko12@gmail.com",
-                NormalizedEmail = "BOTILOKO12@GMAIL.COM",
-                EmailConfirmed = true,
-                Name = "Vinicius augusto boti pereira",
-                DataNascimento = DateTime.Parse("06/09/2002"),
-                LockoutEnabled = true                
-            };
-            PasswordHasher<Usuario> password = new();
-            password.HashPassword(usuario,"12345");
-            builder.Entity<Usuario>().HasData(usuario);
-            #endregion
-           
-            #region Popular Perfil
-            List<IdentityRole> perfis = new(){
-                new(){
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Administrador",
-                    NormalizedName = "ADMINISTRADOR"
-                },
-                new(){
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "funcionario",
-                    NormalizedName = "FUNCIONARIO"
-                },
-                new(){
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "cliente",
-                    NormalizedName = "CLIENTE"
-                }        
-            };
-            builder.Entity<IdentityRole>().HasData(perfis);               
-            #endregion
-
-            #region Popular Usuário-Perfil
-            List<IdentityUserRole<string>> userRoles = new(){
-                new(){
-                    UserId = usuario.Id,
-                    RoleId = perfis[0].Id
-                }
-            };
-            builder.Entity<IdentityUserRole<string>>().HasData(userRoles);               
-            #endregion
-        }    
+            AppDbSeed seed = new(builder);
+        }
     }
 }

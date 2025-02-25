@@ -26,7 +26,7 @@ namespace ProjectWeb3.Models
         [Required(ErrorMessage = "Por favor, informe a quantidade em estoque")]
         [Range(0,int.MaxValue)]
         [Display(Name = "Quantidade em Estoque")]
-        public int QtdEstoque { get; set; }
+        public int QtdeEstoque { get; set; }
 
         [Required(ErrorMessage = "Defina o valor do custo")]
         [Display(Name = "Valor de Custo")]
@@ -39,5 +39,9 @@ namespace ProjectWeb3.Models
         [Range(0, double.MaxValue)]
         [Column(TypeName = "decimal(10,2)")]
         public decimal  ValorVenda { get; set; }
+        
+        public bool Destaque { get; set; } = false;
+
+        public List<ProdutoFoto> Fotos  { get; set; }
     }
 }
