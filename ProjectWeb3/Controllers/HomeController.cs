@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectWeb3.Data;
 using ProjectWeb3.Models;
+using ProjectWeb3.ViewModels;
+
 
 namespace ProjectWeb3.Controllers;
 
@@ -26,6 +28,28 @@ public class HomeController : Controller
         return View(produtos);
     }
 
+    public IActionResult Produto(int id)
+    {
+        Produto produto = _context.Produtos
+        .Where(p => p.Id == id)
+        .Include(p => p.categoria)
+        .Include(p => p.Fotos)
+        .SingleOrDefault();
+
+        ProdutoVM produtoVM = new()
+        {
+            Produto = produto
+        };
+
+        produtoVM.Produtos = _context.Produtos
+        .Where(p => p.CategoriaId == produto.CategoriaId
+            && p.Id != produto.Id)
+        .Take(4)
+        .Include(p => p.Fotos)
+        .ToList();
+
+        return View(produtoVM);
+    }
     public IActionResult Privacy()
     {
         return View();
