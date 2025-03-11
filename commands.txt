@@ -35,5 +35,13 @@ Executar o Xampp e MySql
 
 Abrir o terminal :
      cd seu projeto
-     dotnet watch run
+     dotnet watch 
+     
+
+
+
+    dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 9.0.0
+
+     dotnet aspnet-codegenerator controller -name CategoriasController --model Categoria
+      --dataContext AppDbContext --layout "~/Views/Shared/_LayoutAdmin.cshtml" -outDir Controllers
     
