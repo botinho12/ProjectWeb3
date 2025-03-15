@@ -34,8 +34,8 @@ configurar os serviços de contexto e Identity no program.csproj
 Executar o Xampp e MySql
 
 Abrir o terminal :
-     cd seu projeto
-     dotnet watch 
+     cd ProjectWeb3
+     dotnet watch run
      
 
 
@@ -43,5 +43,8 @@ Abrir o terminal :
     dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 9.0.0
 
      dotnet aspnet-codegenerator controller -name CategoriasController --model Categoria
+      --dataContext AppDbContext --layout "~/Views/Shared/_LayoutAdmin.cshtml" -outDir Controllers
+
+      dotnet aspnet-codegenerator controller -name ProdutosController --model Produto
       --dataContext AppDbContext --layout "~/Views/Shared/_LayoutAdmin.cshtml" -outDir Controllers
     
