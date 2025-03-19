@@ -38,35 +38,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.categoria.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtdeEstoque)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorCusto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorVenda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destaque)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoria.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtdeEstoque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorCusto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorVenda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destaque)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit me-1"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-search me-1"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
