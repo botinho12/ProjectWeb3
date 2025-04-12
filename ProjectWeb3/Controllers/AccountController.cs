@@ -1,10 +1,8 @@
-using System.Data.Common;
 using System.Net.Mail;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWeb3.Data;
-
 using ProjectWeb3.Models;
 using ProjectWeb3.ViewModels;
 using Store.Helpers;
@@ -144,6 +142,11 @@ namespace ProjectWeb3.Controllers
                 _logger.LogInformation($"Usuário {ClaimTypes.Email} fez logoff");
                 await _signInManager.SignOutAsync();
                 return RedirectToAction("Index", "Home");
+            }
+
+            public IActionResult AccessDenied()
+            {
+                return View();
             }
 
         public bool IsValidEmail(string email)
