@@ -3,9 +3,10 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWeb3.Data;
+using ProjectWeb3.Helpers;
 using ProjectWeb3.Models;
 using ProjectWeb3.ViewModels;
-using Store.Helpers;
+
 
 namespace ProjectWeb3.Controllers
 {
